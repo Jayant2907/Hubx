@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react'
 
-function App() {
+import React from 'react'
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button"
+import "bootstrap/dist/css/bootstrap.min.css";
+import Graph from './Graph';
+
+const App = () => {
+  const [open,setOpen]=useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Button color="primary" onClick={()=>setOpen(true)}>
+  Primary
+</Button>
+   <Modal show={open}>
+   <Modal.Header>Hi</Modal.Header>
+   <Modal.Body><Graph/></Modal.Body>
+   <Modal.Footer>
+     <Button color="primary" onClick={()=>setOpen(false)}>Close</Button>
+   </Modal.Footer>
+ </Modal>
+ </>
+  )
 }
 
 export default App;
